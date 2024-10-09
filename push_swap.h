@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 17:25:00 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 13:30:54 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:16:50 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,16 @@ int		ft_min_position(t_stack **stack_a);
 int		ft_min_value(t_stack **stack_a);
 int		ft_max_position(t_stack **stack_a);
 int		ft_max_value(t_stack **stack_a);
+
+/*4_PS_IF_PARTIALLY_ORDERED.C FILE*/
+int		if_partially_sorted(t_stack **stack_a);
+int		if_partially_and_inversely_sorted(t_stack **stack_a);
+int		if_inversely_sorted(t_stack **stack_a);
+
+/*5_PS_ALGORITHM_1.C FILE*/
+//void	greedy_algorithm(t_stack **stack_a, t_stack **stack_b);
+void	ft_sort_inversed(t_stack **stack_a, t_stack **stack_b);
+void	ps_algorithm(t_stack **stack_a, t_stack **stack_b);
 
 /* 
 GLOSSARY OF ABBREVIATIONS

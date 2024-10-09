@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:25:38 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 13:16:10 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:16:21 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_stack	*ft_stacklast(t_stack **stack)
 int	ft_stacklength(t_stack *stack)
 {
 	int	length;
-
 
 	length = 0;
 	while (stack != NULL)

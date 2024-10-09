@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:51:04 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 13:16:18 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 20:30:26 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void	ft_ra_rb(t_stack **stack, int print, int aorb)
 	t_stack	*first;
 	t_stack	*last;
 
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
 	first = *stack;
-	last = ft_stacklast(stack);
 	*stack = first->next;
+	last = ft_stacklast(stack);
 	first->next = NULL;
 	last->next = first;
 	if (print)
@@ -40,4 +42,3 @@ void	ft_ra_rb(t_stack **stack, int print, int aorb)
 			write(1, "rb\n", 3);
 	}
 }
-

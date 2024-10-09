@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:51:04 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 13:16:14 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:54:18 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,23 @@ void	ft_rrr(t_stack **a, t_stack **b, int print)
 
 void	ft_rra_rrb(t_stack **stack, int print, int aorb)
 {
-    t_stack	*first;
-    t_stack	*last;
-    t_stack	*second_last;
+	t_stack	*first;
+	t_stack	*last;
 
-    if (!(*stack) || (*stack)->next == NULL)
-        return ;
-    first = *stack;
-    last = ft_stacklast(stack);
-    second_last = first;
-    while (second_last->next != last)
-        second_last = second_last->next;
-
-    second_last->next = NULL;
-    last->next = first;
-    *stack = last;
-    if (print)
-    {
-        if (aorb == 0)
-            write(1, "rra\n", 4);
-        else
-            write(1, "rrb\n", 4);
-    }
+	if (!(*stack) || (*stack)->next == NULL)
+		return ;
+	last = ft_stacklast(stack);
+	first = *stack;
+	while (first->next->next != NULL)
+		first = first->next;
+	first->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	if (print)
+	{
+		if (aorb == 0)
+			write(1, "rra\n", 4);
+		else
+			write(1, "rrb\n", 4);
+	}
 }

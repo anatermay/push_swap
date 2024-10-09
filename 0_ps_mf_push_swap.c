@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:27:21 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/08 18:01:02 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:29:05 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,5 @@ void	ft_push_swap(t_stack *stack_a, t_stack *stack_b)
 	else if (length == 5 && ft_sorted(stack_a) == 0)
 		if_five_args(&stack_a, &stack_b);
 	else if (length > 5 && ft_sorted(stack_a) == 0)
-	{
-		//ps_algorithm(&stack_a, &stack_b);
-		//write(1, "It's going well :)", 18);
-	}
+		ps_algorithm(&stack_a, &stack_b);
 }
