@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 17:25:00 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/08 14:39:42 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:30:54 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,11 @@ void	if_four_args(t_stack **stack_a, t_stack **stack_b);
 void	if_five_args(t_stack **stack_a, t_stack **stack_b);
 
 /*4_PS_MORE_INA.C FILE*/
-t_stack	*ft_min_value(t_stack **stack_a);
-t_stack	*ft_max_value(t_stack **stack_a);
+void	ft_positioning(t_stack **stack_a);
+int		ft_min_position(t_stack **stack_a);
+int		ft_min_value(t_stack **stack_a);
+int		ft_max_position(t_stack **stack_a);
+int		ft_max_value(t_stack **stack_a);
 
 /* 
 GLOSSARY OF ABBREVIATIONS

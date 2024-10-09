@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:00:22 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/08 18:50:21 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:32:10 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 void	if_four_args(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_stackadd(stack_b, ft_min_value(stack_a));
-	if ((*stack_b)->position < 2)
+	int	count;
+
+	count = ft_stacklength(*stack_a) - 3;
+	while (count > 0)
 	{
-		while ((*stack_b)->position == 0)
-			ft_ra_rb(stack_a, 1, 0);
+		ft_positioning(stack_a);
+		ft_pa_pb(stack_b, stack_a, 1, 1);
+		count--;
 	}
-	else if (((*stack_b)->position) >= 2)
-	{
-		while ((*stack_b)->position == 0)
-			ft_rra_rrb(stack_a, 1, 0);
-	}
-	ft_pa_pb(stack_a, stack_b, 1, 1);
 	if_three_args(stack_a);
 	ft_pa_pb(stack_a, stack_b, 1, 0);
 }
-

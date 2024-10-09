@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:51:04 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/08 14:19:30 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:16:18 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,17 @@ void	ft_ra_rb(t_stack **stack, int print, int aorb)
 	t_stack	*first;
 	t_stack	*last;
 
-	while (!(*stack) || (*stack)->next == NULL)
-		return ;
 	first = *stack;
-	while ((*stack)->next)
-	{
-		if (!(*stack)->next->next)
-			last = (*stack)->next;
-		*stack = (*stack)->next;
-	}
-	first->prev = last;
-	last->next = first;
-	*stack = (*stack)->next;
+	last = ft_stacklast(stack);
+	*stack = first->next;
 	first->next = NULL;
-	(*stack)->prev = NULL;
-	if (ft_sorted(*stack) == 1)
+	last->next = first;
+	if (print)
 	{
-		if (print)
-		{
-			if (aorb == 0)
-				write(1, "ra\n", 3);
-			else
-				write(1, "rb\n", 3);
-		}
+		if (aorb == 0)
+			write(1, "ra\n", 3);
+		else
+			write(1, "rb\n", 3);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:51:04 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/08 14:29:19 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:16:14 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,26 @@ void	ft_rrr(t_stack **a, t_stack **b, int print)
 
 void	ft_rra_rrb(t_stack **stack, int print, int aorb)
 {
-	t_stack	*first;
-	t_stack	*last;
+    t_stack	*first;
+    t_stack	*last;
+    t_stack	*second_last;
 
-	while (!(*stack) || (*stack)->next == NULL)
-		return ;
-	first = *stack;
-	while ((*stack)->next)
-	{
-		if (!(*stack)->next->next)
-			last = (*stack)->next;
-		*stack = (*stack)->next;
-	}
-	first->prev = last;
-	last->next = first;
-	*stack = (*stack)->next;
-	first->next = NULL;
-	(*stack)->prev = NULL;
-	if (ft_sorted(*stack) == 1)
-	{
-		if (print)
-		{
-			if (aorb == 0)
-				write(1, "rra\n", 4);
-			else
-				write(1, "rrb\n", 4);
-		}
-	}
+    if (!(*stack) || (*stack)->next == NULL)
+        return ;
+    first = *stack;
+    last = ft_stacklast(stack);
+    second_last = first;
+    while (second_last->next != last)
+        second_last = second_last->next;
+
+    second_last->next = NULL;
+    last->next = first;
+    *stack = last;
+    if (print)
+    {
+        if (aorb == 0)
+            write(1, "rra\n", 4);
+        else
+            write(1, "rrb\n", 4);
+    }
 }

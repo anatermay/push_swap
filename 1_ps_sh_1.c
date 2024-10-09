@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:25:38 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/08 18:51:19 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:16:10 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_stacklength(t_stack *stack)
 {
 	int	length;
 
+
 	length = 0;
 	while (stack != NULL)
 	{
@@ -49,7 +50,7 @@ void	ft_free_stack(t_stack **stack)
 
 	if (!stack)
 		return ;
-	while (*stack)
+	while (*stack != NULL)
 	{
 		temp = *stack;
 		*stack = (*stack)->next;
