@@ -61,3 +61,29 @@ For the bonus part, you can include a checker program to validate the operations
 ## Additional Resources
 Review the official Libft documentation to optimize memory management and standard functions in C.
 Implement debugging strategies to improve the algorithm's efficiency.
+
+/* 
+GLOSSARY OF ABBREVIATIONS
+	- BSO: Basic Stacks Operations
+	- AORB: A or B
+	- ACOST: A cost
+	- BCOST: B cost
+	- PS: Push Swap
+	- SH: Stack Handling
+	- CMP: Complementary
+	- MF: Main Functions
+	- TEMP: Temporary
+	- LIBFT: Libft Functions [FUNCTIONS LIBRARY]
+GLOSSARY OF FILES ABREVIATIONS
+	- 0__PS_MF: Push Swap Main Functions
+	- 1_PS_SH: Push Swap Stack Handling
+	- 2_PS_CMP: Push Swap Complementary
+	- 3_PS_BSO: Push Swap Basic Stacks Operations
+	- 4_PS_: Push Swap If "Number" Arguments
+BASIC STACKS OPERATIONS USE AORB
+	int AORB -> a = 0 && b = 1
+		- IF PA -> dst = t_stack **a
+		&& src = t_stack **b;
+		- IF PB -> dst = t_stack **b
+		&& src = t_stack **a;
+*/

@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 17:25:00 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 19:16:50 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:09:01 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,56 +23,61 @@ typedef struct s_stack
 {
 	int				value;
 	int				position;
+	int 			p_side;
+	int 			target;
+	int 			t_side;
+	int 			aorb;
+	int 			length_a;
+	int 			length_b;
+	char			 **cmd;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
 
 /*0_PS_MF_MAIN.C FILE*/
-void	ft_argv_extraction(int argc, char **argv, t_stack **stack_a);
+void	argv_extraction(int argc, char **argv, t_stack **stack_a);
 int		main(int argc, char **argv);
 
 /*0_PS_MF_PUSH_SWAP.C FILE*/
-void	ft_push_swap(t_stack *stack_a, t_stack *stack_b);
+void	push_swap(t_stack *stack_a, t_stack *stack_b);
 
 /*0_PS_MF_CHECKER.C FILE*/
-void	ft_error(int print);
-int		ft_sorted(t_stack *stack_a);
-int		ft_duplicates(t_stack *stack_a);
-void	ft_checker(t_stack *stack_a);
-void	ft_valid_numbers(char *str);
+void	error(int print);
+int		sorted(t_stack *stack_a);
+int		duplicates(t_stack *stack_a);
+void	checker(t_stack *stack_a);
+void	valid_numbers(char *str);
 
 /*1_PS_SH_1.C FILE*/
-void	ft_stackadd(t_stack **stack, t_stack *add);
-t_stack	*ft_stacklast(t_stack **stack);
-int		ft_stacklength(t_stack *stack);
-void	ft_free_stack(t_stack **stack);
-void	ft_free_both_stack(t_stack **stack_a, t_stack **stack_b);
-
-/*1_PS_SH_2.C FILE*/
+void	stackadd(t_stack **stack, t_stack *add);
+t_stack	*stacklast(t_stack **stack);
+int		stacklength(t_stack *stack);
+void	free_stack(t_stack **stack);
+void	free_both_stack(t_stack **stack_a, t_stack **stack_b);
 
 /*2_PS_CMP_LIBFT.C FILE*/
-int		ft_isdigit(int c);
-int		ft_spc(char str);
-int		ft_atoi(const char *str);
+int		isdigit(int c);
+int		spc(char str);
+int		atoi(const char *str);
 
 /*3_PS_BSO_SWAP.C FILE*/
-void	ft_ss(t_stack **a, t_stack **b, int print);
-void	ft_sa_sb(t_stack **stack, int print, int aorb);
+void	ss(t_stack **a, t_stack **b, int print);
+void	sa_sb(t_stack **stack, int print, int aorb);
 
 /*3_PS_BSO_ROTATE.C FILE*/
-void	ft_rr(t_stack **a, t_stack **b, int print);
-void	ft_ra_rb(t_stack **stack, int print, int aorb);
+void	rr(t_stack **a, t_stack **b, int print);
+void	ra_rb(t_stack **stack, int print, int aorb);
 
 /*3_PS_BSO_REVERSE_ROTATE.C FILE*/
-void	ft_rrr(t_stack **a, t_stack **b, int print);
-void	ft_rra_rrb(t_stack **stack, int print, int aorb);
+void	rrr(t_stack **a, t_stack **b, int print);
+void	rra_rrb(t_stack **stack, int print, int aorb);
 
 /*3_PS_BSO_PUSH.C FILE*/
-void	ft_pa_pb(t_stack **dst, t_stack **src, int print, int aorb);
+void	pa_pb(t_stack **dst, t_stack **src, int print, int aorb);
 
 /*3_PS_MORE_BSO.C FILE*/
-void	ft_aorb_rot(t_stack **stack, int cost, int aorb);
-void	ft_rr_rot(t_stack **a, t_stack **b, int acost, int bcost);
+void	aorb_rot(t_stack **stack, int cost, int aorb);
+void	rr_rot(t_stack **a, t_stack **b, int acost, int bcost);
 
 /*4_PS_IF_THREE_ARGS.C FILE*/
 void	if_three_args(t_stack **stack_a);
@@ -84,46 +89,23 @@ void	if_four_args(t_stack **stack_a, t_stack **stack_b);
 void	if_five_args(t_stack **stack_a, t_stack **stack_b);
 
 /*4_PS_MORE_INA.C FILE*/
-void	ft_positioning(t_stack **stack_a);
-int		ft_min_position(t_stack **stack_a);
-int		ft_min_value(t_stack **stack_a);
-int		ft_max_position(t_stack **stack_a);
-int		ft_max_value(t_stack **stack_a);
+void	min_positioning(t_stack **stack_a);
+int		min_position(t_stack **stack_a);
+int		min_value(t_stack **stack_a);
+int		max_position(t_stack **stack_a);
+int		max_value(t_stack **stack_a);
 
 /*4_PS_IF_PARTIALLY_ORDERED.C FILE*/
 int		if_partially_sorted(t_stack **stack_a);
 int		if_partially_and_inversely_sorted(t_stack **stack_a);
 int		if_inversely_sorted(t_stack **stack_a);
+void	sort_inversed(t_stack **stack_a, t_stack **stack_b);
 
 /*5_PS_ALGORITHM_1.C FILE*/
-//void	greedy_algorithm(t_stack **stack_a, t_stack **stack_b);
-void	ft_sort_inversed(t_stack **stack_a, t_stack **stack_b);
-void	ps_algorithm(t_stack **stack_a, t_stack **stack_b);
-
-/* 
-GLOSSARY OF ABBREVIATIONS
-	- BSO: Basic Stacks Operations
-	- AORB: A or B
-	- ACOST: A cost
-	- BCOST: B cost
-	- PS: Push Swap
-	- SH: Stack Handling
-	- CMP: Complementary
-	- MF: Main Functions
-	- TEMP: Temporary
-	- LIBFT: Libft Functions [FUNCTIONS LIBRARY]
-GLOSSARY OF FILES ABREVIATIONS
-	- 0__PS_MF: Push Swap Main Functions
-	- 1_PS_SH: Push Swap Stack Handling
-	- 2_PS_CMP: Push Swap Complementary
-	- 3_PS_BSO: Push Swap Basic Stacks Operations
-	- 4_PS_: Push Swap If "Number" Arguments
-BASIC STACKS OPERATIONS USE AORB
-	int AORB -> a = 0 && b = 1
-		- IF PA -> dst = t_stack **a
-		&& src = t_stack **b;
-		- IF PB -> dst = t_stack **b
-		&& src = t_stack **a;
- */
+void	stack_reset(t_stack **stack_a, t_stack **stack_b);
+void	stack_a_reset(t_stack **stack_a, t_stack **stack_b);
+void	stack_b_reset(t_stack **stack_a, t_stack **stack_b);
+int		find_target_position(t_stack *stack, t_stack **stack_cmp);
+int		find_position(t_stack *stack, t_stack **stack_cmp);
 
 #endif

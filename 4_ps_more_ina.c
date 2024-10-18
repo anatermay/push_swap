@@ -6,24 +6,24 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:37:56 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 13:43:25 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:20:37 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_positioning(t_stack **stack_a)
+void	min_positioning(t_stack **stack_a)
 {
 	int	position;
 	int	length;
 
-	position = ft_min_position(stack_a);
-	length = ft_stacklength(*stack_a);
+	position = min_position(stack_a);
+	length = stacklength(*stack_a);
 	if (position <= (length) / 2)
 	{
 		while (position > 0)
 		{
-			ft_ra_rb(stack_a, 1, 0);
+			ra_rb(stack_a, 1, 0);
 			position--;
 		}
 	}
@@ -32,13 +32,13 @@ void	ft_positioning(t_stack **stack_a)
 		position = length - position;
 		while (position > 0)
 		{
-			ft_rra_rrb(stack_a, 1, 0);
+			rra_rrb(stack_a, 1, 0);
 			position--;
 		}
 	}
 }
 
-int	ft_min_position(t_stack **stack_a)
+int	min_position(t_stack **stack_a)
 {
 	t_stack	*temp;
 	int		min_value;
@@ -62,7 +62,7 @@ int	ft_min_position(t_stack **stack_a)
 	return (min_position);
 }
 
-int	ft_min_value(t_stack **stack_a)
+int	min_value(t_stack **stack_a)
 {
 	t_stack	*temp;
 	int		min_value;
@@ -78,7 +78,7 @@ int	ft_min_value(t_stack **stack_a)
 	return (min_value);
 }
 
-int	ft_max_position(t_stack **stack_a)
+int	max_position(t_stack **stack_a)
 {
 	t_stack	*temp;
 	int		max_value;
@@ -102,7 +102,7 @@ int	ft_max_position(t_stack **stack_a)
 	return (max_position);
 }
 
-int	ft_max_value(t_stack **stack_a)
+int	max_value(t_stack **stack_a)
 {
 	t_stack	*temp;
 	int		max_value;

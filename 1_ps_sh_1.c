@@ -6,19 +6,19 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:25:38 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 14:16:21 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:20:37 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_stackadd(t_stack **stack, t_stack *add)
+void	stackadd(t_stack **stack, t_stack *add)
 {
 	add->next = *stack;
 	*stack = add;
 }
 
-t_stack	*ft_stacklast(t_stack **stack)
+t_stack	*stacklast(t_stack **stack)
 {
 	t_stack	*temp;
 
@@ -30,7 +30,7 @@ t_stack	*ft_stacklast(t_stack **stack)
 	return (temp);
 }
 
-int	ft_stacklength(t_stack *stack)
+int	stacklength(t_stack *stack)
 {
 	int	length;
 
@@ -43,7 +43,7 @@ int	ft_stacklength(t_stack *stack)
 	return (length);
 }
 
-void	ft_free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
@@ -58,10 +58,10 @@ void	ft_free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	ft_free_both_stack(t_stack **stack_a, t_stack **stack_b)
+void	free_both_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	if (!stack_a || !stack_b || !*stack_a || !*stack_b)
 		return ;
-	ft_free_stack(stack_a);
-	ft_free_stack(stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 }

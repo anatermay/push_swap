@@ -6,20 +6,20 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:20:54 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 14:20:56 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:20:37 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(int print)
+void	error(int print)
 {
 	if (print != 0)
 		write(1, "Error\n", 6);
 	exit(1);
 }
 
-int	ft_sorted(t_stack *stack_a)
+int	sorted(t_stack *stack_a)
 {
 	t_stack	*temp;
 
@@ -33,7 +33,7 @@ int	ft_sorted(t_stack *stack_a)
 	return (1);
 }
 
-int	ft_duplicates(t_stack *stack_a)
+int	duplicates(t_stack *stack_a)
 {
 	t_stack	*temp;
 	t_stack	*temp2;
@@ -53,15 +53,15 @@ int	ft_duplicates(t_stack *stack_a)
 	return (0);
 }
 
-void	ft_checker(t_stack *stack_a)
+void	checker(t_stack *stack_a)
 {
-	if (ft_duplicates(stack_a))
-		ft_error(1);
-	if (ft_sorted(stack_a))
-		ft_error(0);
+	if (duplicates(stack_a))
+		error(1);
+	if (sorted(stack_a))
+		error(0);
 }
 
-void	ft_valid_numbers(char *str)
+void	valid_numbers(char *str)
 {
 	long	number;
 	int		sign;
@@ -70,8 +70,8 @@ void	ft_valid_numbers(char *str)
 	number = 0;
 	sign = 1;
 	index = 0;
-	if (!ft_isdigit(str[0]) && str[0] != '-' && str[0] != '+')
-		ft_error(1);
+	if (!isdigit(str[0]) && str[0] != '-' && str[0] != '+')
+		error(1);
 	if (str[index] == '-' || str[index] == '+')
 	{
 		if (str[index] == '-')
@@ -80,11 +80,11 @@ void	ft_valid_numbers(char *str)
 	}
 	while (str[index])
 	{
-		if (!ft_isdigit(str[index]))
-			ft_error(1);
+		if (!isdigit(str[index]))
+			error(1);
 		number = number * 10 + (str[index]) - '0';
 		index++;
 	}
 	if ((number * sign) > INT_MAX || (number * sign) < INT_MIN)
-		ft_error(1);
+		error(1);
 }

@@ -22,8 +22,8 @@ int	if_partially_sorted(t_stack **stack_a)
 	while (temp && temp->next != NULL)
 	{
 		if ((temp->value < temp->next->value)
-			&& (temp->value == ft_min_value(stack_a))
-			&& (temp->next->value == ft_max_value(stack_a)))
+			&& (temp->value == min_value(stack_a))
+			&& (temp->next->value == max_value(stack_a)))
 			sorted = 0;
 		temp = temp->next;
 	}
@@ -38,8 +38,8 @@ int	if_partially_and_inversely_sorted(t_stack **stack_a)
 	while (temp->next != NULL)
 	{
 		if ((temp->value < temp->next->value)
-			&& (temp->value == ft_max_value(stack_a))
-			&& (temp->next->value == ft_min_value(stack_a)))
+			&& (temp->value == max_value(stack_a))
+			&& (temp->next->value == min_value(stack_a)))
 			return (0);
 		temp = temp->next;
 	}

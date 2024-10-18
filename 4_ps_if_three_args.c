@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:16:39 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 14:33:12 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:20:37 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	if_three_args(t_stack **stack_a)
 	second = (*stack_a)->next->value;
 	third = (*stack_a)->next->next->value;
 	if (first > second && first < third && second < third)
-		ft_sa_sb(stack_a, 1, 0);
+		sa_sb(stack_a, 1, 0);
 	if (first > second && first > third && second > third)
 	{
-		ft_sa_sb(stack_a, 1, 0);
-		ft_rra_rrb(stack_a, 1, 0);
+		sa_sb(stack_a, 1, 0);
+		rra_rrb(stack_a, 1, 0);
 	}
 	if (first > second && first > third && second < third)
-		ft_ra_rb(stack_a, 1, 0);
+		ra_rb(stack_a, 1, 0);
 	if (first < second && first < third && second > third)
 	{
-		ft_sa_sb(stack_a, 1, 0);
-		ft_ra_rb(stack_a, 1, 0);
+		sa_sb(stack_a, 1, 0);
+		ra_rb(stack_a, 1, 0);
 	}
 	if (first < second && first > third && second > third)
-		ft_rra_rrb(stack_a, 1, 0);
+		rra_rrb(stack_a, 1, 0);
 }
