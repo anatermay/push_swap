@@ -23,8 +23,12 @@ typedef struct s_stack
 {
 	int				value;
 	int				position;
-	struct s_stack	*next;
-	struct s_stack	*prev;
+	int				cost;
+	int				side; // Up or Down
+	int				cheapest // True or False
+	struct s_stack			*target;
+	struct s_stack			*next;
+	struct s_stack			*prev;
 }	t_stack;
 
 /*0_PS_MF_MAIN.C FILE*/
