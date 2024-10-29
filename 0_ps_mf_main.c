@@ -36,12 +36,14 @@ void	ft_argv_extraction(int argc, char **argv, t_stack **stack_a)
 
 void	ft_argc_checker(int argc, char **argv)
 {
-	if (argc <= 2)
-	{
-		if (argc == 2)
-			ft_valid_numbers(argv[1]);
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		ft_error(0);
+	else if (argc == 2)
+	{
+		ft_valid_numbers(argv);
+		argv == split(argv[1], ' ');
 	}
+	
 }
 
 int	main(int argc, char **argv)
