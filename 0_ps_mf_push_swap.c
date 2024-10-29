@@ -1,31 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   0_ps_mf_push_swap.c                                :+:      :+:    :+:   */
+/*   5_ps_algorithm_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 14:27:21 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/09 16:29:05 by aternero         ###   ########.fr       */
+/*   Created: 2024/10/09 16:27:02 by aternero          #+#    #+#             */
+/*   Updated: 2024/10/09 20:08:39 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push_swap(t_stack *stack_a, t_stack *stack_b)
+void	ft_sort_inversed(t_stack **stack_a, t_stack **stack_b)
 {
-	int	length;
+	int		length;
+	
+	length = ft_stacklength(*stack_a);
+	while (length > 0)
+	{
+		ft_pa_pb(stack_b, stack_a, 1, 1);
+		length--;
+	}
+	length = ft_stacklength(*stack_b);
+	while (length > 0)
+	{
+		ft_rra_rrb(stack_b, 1, 1);
+		ft_pa_pb(stack_a, stack_b, 1, 0);
+		length--;
+	}
+}
 
-	stack_b = NULL;
-	length = ft_stacklength(stack_a);
-	if (length == 2 && ft_sorted(stack_a) == 0)
-		ft_sa_sb(&stack_a, 1, 0);
-	else if (length == 3 && ft_sorted(stack_a) == 0)
-		if_three_args(&stack_a);
-	else if (length == 4 && ft_sorted(stack_a) == 0)
-		if_four_args(&stack_a, &stack_b);
-	else if (length == 5 && ft_sorted(stack_a) == 0)
-		if_five_args(&stack_a, &stack_b);
-	else if (length > 5 && ft_sorted(stack_a) == 0)
-		ps_algorithm(&stack_a, &stack_b);
+void	ps_algorithm(t_stack **stack_a, t_stack **stack_b)
+{
+	if (if_inversely_sorted(stack_a))
+		ft_sort_inversed(stack_a, stack_b);
+	else if (if_partially_sorted(stack_a))
+		ft_positioning(stack_a);
+	else if (if_partially_and_inversely_sorted(stack_a))
+	{
+		ft_sort_inversed(stack_a, stack_b);
+		ft_positioning(stack_a);
+	}
+	else
+		turk_algorithm(stack_a, stack_b);
 }

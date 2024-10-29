@@ -23,6 +23,10 @@ typedef struct s_stack
 {
 	int				value;
 	int				position;
+	int				cost;
+	int				side; // Up [0] or Down[1]
+	int				cheapest // True[1] or False[0]
+	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -55,6 +59,9 @@ int		ft_isdigit(int c);
 int		ft_spc(char str);
 int		ft_atoi(const char *str);
 
+/*1_PS_CMP_LIBFT_SPLIT.C FILE */
+char	**ft_split(const char *s, char c);
+
 /*3_PS_BSO_SWAP.C FILE*/
 void	ft_ss(t_stack **a, t_stack **b, int print);
 void	ft_sa_sb(t_stack **stack, int print, int aorb);
@@ -81,24 +88,42 @@ void	if_three_args(t_stack **stack_a);
 void	if_four_args(t_stack **stack_a, t_stack **stack_b);
 
 /*4_PS_IF_FIVE_ARGS.C FILE*/
-void	if_five_args(t_stack **stack_a, t_stack **stack_b);
+void		if_five_args(t_stack **stack_a, t_stack **stack_b);
 
 /*4_PS_MORE_INA.C FILE*/
-void	ft_positioning(t_stack **stack_a);
-int		ft_min_position(t_stack **stack_a);
-int		ft_min_value(t_stack **stack_a);
-int		ft_max_position(t_stack **stack_a);
-int		ft_max_value(t_stack **stack_a);
+void		ft_min_positioning(t_stack **stack_a);
+int			ft_min_position(t_stack **stack_a);
+int			ft_min_value(t_stack **stack_a);
+int			ft_max_position(t_stack **stack_a);
+int			ft_max_value(t_stack **stack_a);
 
 /*4_PS_IF_PARTIALLY_ORDERED.C FILE*/
-int		if_partially_sorted(t_stack **stack_a);
-int		if_partially_and_inversely_sorted(t_stack **stack_a);
-int		if_inversely_sorted(t_stack **stack_a);
+int			if_partially_sorted(t_stack **stack_a);
+int			if_partially_and_inversely_sorted(t_stack **stack_a);
+int			if_inversely_sorted(t_stack **stack_a);
+
+
+
+
+
 
 /*5_PS_ALGORITHM_1.C FILE*/
-//void	greedy_algorithm(t_stack **stack_a, t_stack **stack_b);
-void	ft_sort_inversed(t_stack **stack_a, t_stack **stack_b);
-void	ps_algorithm(t_stack **stack_a, t_stack **stack_b);
+void		move_b_to_a(t:stack **stack_a, t_stack **stack_b);
+static void	cost_analysis_b(t_stack *stack_a, t_stack *stack_b); //void
+static void	set_target_b(t_stack *stack_a, t_stack *stack_b); //void
+void		init_nodes_b(t_stack *stack_a, t_stack *stack_b); //void
+MIN 39:51 ....................................................................
+prep_for_psuh(t_stack **stack, t_stack *stack, char aorb); //void
+get_cheapest(t_stack **stack); //void
+static void		move_a_to_b(t_stack **stack_a, t_stack **stack_b);
+void		set_cheapest(t_stack *stack_a); //void
+static void	cost_analysis_a(t_stack *stack_a, t_stack *stack_b);
+static void	set_target_a(t_stack *stack_a, t_stack *stack_b);
+void		current_index(t_stack *stack);
+void		init_nodes_a(t_stack *stack_a, t_stack *stack_b);
+void		turk_algorithm(t_stack **stack_a, t_stack **stack_b);
+void		ft_sort_inversed(t_stack **stack_a, t_stack **stack_b);
+void		ps_algorithm(t_stack **stack_a, t_stack **stack_b);
 
 /* 
 GLOSSARY OF ABBREVIATIONS
