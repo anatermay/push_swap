@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "push_swap.h": "c",
+        "6_ps_target_": "cpp",
+        "type_traits": "c"
+    }
+}

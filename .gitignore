@@ -53,3 +53,5 @@ dkms.conf
 
 # Also
 .txt
+DS.Store
+.gitignore

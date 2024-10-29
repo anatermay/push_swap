@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:15:07 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/18 18:07:36 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:19:42 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,15 @@ void	rr_rot(t_stack **a, t_stack **b, int acost, int bcost)
 		rr(a, b, 1);
 		acost--;
 		bcost--;
+	}
+}
+
+void	rrr_rot(t_stack **a, t_stack **b, int acost, int bcost)
+{
+	while (acost < 0 && bcost < 0)
+	{
+		rrr(a, b, 1);
+		acost++;
+		bcost++;
 	}
 }

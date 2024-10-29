@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   0_ps_mf_checker.c                                  :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:20:54 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/18 17:20:37 by aternero         ###   ########.fr       */
+/*   Created: 2024/10/29 19:57:40 by aternero          #+#    #+#             */
+/*   Updated: 2024/10/29 20:58:24 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	sorted(t_stack *stack_a)
 	t_stack	*temp;
 
 	temp = stack_a;
-	while (temp->next != NULL)
+	while (temp && temp->next != NULL)
 	{
 		if (temp->value > temp->next->value)
 			return (0);

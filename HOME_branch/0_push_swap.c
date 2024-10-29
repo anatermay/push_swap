@@ -1,22 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   0_ps_mf_main.c                                     :+:      :+:    :+:   */
+/*   0_push_swap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/06 17:24:17 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/18 17:26:53 by aternero         ###   ########.fr       */
+/*   Created: 2024/10/29 19:53:22 by aternero          #+#    #+#             */
+/*   Updated: 2024/10/29 22:11:06 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	prev_algorithm(t_stack **stack_a, t_stack **stack_b)
+{
+	/* if (if_inversely_sorted(stack_a))
+		sort_inversed(stack_a, stack_b);
+	else if (if_partially_sorted(stack_a))
+		min_positioning(stack_a);
+	else if (if_partially_and_inversely_sorted(stack_a))
+	{
+		sort_inversed(stack_a, stack_b);
+		min_positioning(stack_a);
+	}
+	else */
+		turk_algorithm(stack_a, stack_b);
+}
+
+void	push_swap(t_stack *stack_a, t_stack *stack_b)
+{
+	int	length;
+
+	stack_b = NULL;
+	length = stacklength(stack_a);
+	if (length == 2 && sorted(stack_a) == 0)
+		sa_sb(&stack_a, 1, 0);
+	else if (length == 3 && sorted(stack_a) == 0)
+		if_three_args(&stack_a);
+	else if (length == 4 && sorted(stack_a) == 0)
+		if_four_args(&stack_a, &stack_b);
+	else if (length == 5 && sorted(stack_a) == 0)
+		if_five_args(&stack_a, &stack_b);
+	else if (length > 5 && sorted(stack_a) == 0)
+		prev_algorithm(&stack_a, &stack_b);
+}
 
 void	argv_extraction(int argc, char **argv, t_stack **stack_a)
 {
 	int		index[2];
 	t_stack	*temp;
 
+	if (argv == NULL)
+		error(0);
 	index[0] = argc - 1;
 	index[1] = 0;
 	while (index[0] > 0)
@@ -36,12 +71,8 @@ void	argv_extraction(int argc, char **argv, t_stack **stack_a)
 
 void	argc_checker(int argc, char **argv)
 {
-	if (argc <= 2)
-	{
-		if (argc == 2)
-			valid_numbers(argv[1]);
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		error(0);
-	}
 }
 
 int	main(int argc, char **argv)

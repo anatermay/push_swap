@@ -6,15 +6,34 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:27:21 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/18 18:08:20 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/28 14:05:10 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	sort_inversed(t_stack **stack_a, t_stack **stack_b)
+{
+	int		length;
+
+	length = stacklength(*stack_a);
+	while (length > 0)
+	{
+		pa_pb(stack_b, stack_a, 1, 1);
+		length--;
+	}
+	length = stacklength(*stack_b);
+	while (length > 0)
+	{
+		rra_rrb(stack_b, 1, 1);
+		pa_pb(stack_a, stack_b, 1, 0);
+		length--;
+	}
+}
+
 void	ps_prev_algorithm(t_stack **stack_a, t_stack **stack_b)
 {
-	if (if_inversely_sorted(stack_a))
+	/* if (if_inversely_sorted(stack_a))
 		sort_inversed(stack_a, stack_b);
 	else if (if_partially_sorted(stack_a))
 		min_positioning(stack_a);
@@ -22,11 +41,9 @@ void	ps_prev_algorithm(t_stack **stack_a, t_stack **stack_b)
 	{
 		sort_inversed(stack_a, stack_b);
 		min_positioning(stack_a);
-	}
-	stack_reset(stack_a, stack_b);
-	/* else if (stacklength(*stack_a) < 5
-		&& stacklength(*stack_a) <= 100)
-		cost_algorithm(stack_a, stack_b); */
+	} */
+	if (stacklength(*stack_a) > 5)
+		algorithm(stack_a, stack_b);
 }
 
 void	push_swap(t_stack *stack_a, t_stack *stack_b)
