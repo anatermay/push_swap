@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   6_ps_utils.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:36:09 by aternero          #+#    #+#             */
-/*   Updated: 2024/10/27 12:05:51 by aternero         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:49:27 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,41 @@ int	be_positive(int n)
 	if (n < 0)
 		return (n * -1);
 	return (n);
+}
+
+void	aorb_rot(t_stack **stack, int cost, int aorb)
+{
+	while (cost != 0)
+	{
+		if (cost > 0)
+		{
+			ra_rb(stack, 1, aorb);
+			cost--;
+		}
+		if (cost < 0)
+		{
+			rra_rrb(stack, 1, aorb);
+			cost++;
+		}
+	}
+}
+
+void	rr_rot(t_stack **a, t_stack **b, int acost, int bcost)
+{
+	while (acost > 0 && bcost > 0)
+	{
+		rr(a, b, 1);
+		acost--;
+		bcost--;
+	}
+}
+
+void	rrr_rot(t_stack **a, t_stack **b, int acost, int bcost)
+{
+	while (acost < 0 && bcost < 0)
+	{
+		rrr(a, b, 1);
+		acost++;
+		bcost++;
+	}
 }
