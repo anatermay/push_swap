@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_handling.c                                  :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 14:05:00 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 21:04:51 by aternero         ###   ########.fr       */
+/*   Created: 2024/11/10 13:48:27 by aternero          #+#    #+#             */
+/*   Updated: 2024/11/12 13:37:54 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_str(char **str)
-{
-	if (!str || !*str)
-		return ;
-	free(*str);
-	*str = NULL;
-}
-
-void	free_stack(t_stack **stack)
+void	pa(t_stack **stack_a, t_stack **stack_b, bool print)
 {
 	t_stack	*temp;
 
-	if (!stack)
+	if (!(*stack_b))
 		return ;
-	while (*stack != NULL)
-	{
-		temp = *stack;
-		*stack = (*stack)->next;
-		free(temp);
-	}
-	*stack = NULL;
+	temp = (*stack_b)->next;
+	(*stack_b)->next = *stack_a;
+	*stack_a = *stack_b;
+	*stack_b = temp;
+	if (print)
+		write(1, "pa\n", 3);
 }
 
-void	free_both_stack(t_stack **stack_a, t_stack **stack_b)
+void	pb(t_stack **stack_a, t_stack **stack_b, bool print)
 {
-	if (!stack_a || !stack_b)
+	t_stack	*temp;
+
+	if (!(*stack_a))
 		return ;
-	free_stack(stack_a);
-	free_stack(stack_b);
+	temp = (*stack_a)->next;
+	(*stack_a)->next = *stack_b;
+	*stack_b = *stack_a;
+	*stack_a = temp;
+	if (print)
+		write(1, "pb\n", 3);
 }
