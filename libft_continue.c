@@ -1,27 +1,76 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_bonus.c                                      :+:      :+:    :+:   */
+/*   libft_continue.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 13:33:15 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 20:11:07 by aternero         ###   ########.fr       */
+/*   Created: 2024/11/20 13:57:12 by aternero          #+#    #+#             */
+/*   Updated: 2024/11/20 14:48:33 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	index;
+	size_t	y;
+	size_t	len;
+	size_t	x;
 
-	index = 0;
-	if (!s)
+	y = 0;
+	len = 0;
+	while (src[len] != '\0')
+	{
+		len++;
+	}
+	if (dstsize == 0)
+	{
+		return (len);
+	}
+	x = dstsize - 1;
+	while (y < x && src[y] != '\0')
+	{
+		dst[y] = src[y];
+		y++;
+	}
+	dst[y] = '\0';
+	return (len);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*box;
+	size_t	len;
+
+	len = ft_strlen(s1) + 1;
+	box = malloc(len);
+	if (box == 0)
 		return (0);
-	while (s[index] != '\0')
-		index++;
-	return (index);
+	ft_strlcpy(box, s1, len);
+	return (box);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	sublen;
+	size_t	slen;
+
+	if (s == NULL)
+		return (NULL);
+	slen = ft_strlen((char *)s);
+	if (start >= slen)
+		return (ft_strdup(""));
+	sublen = len;
+	if (start + sublen > slen)
+		sublen = slen - start;
+	sub = (char *)malloc((sublen + 1) * sizeof(char));
+	if (!sub)
+		return (NULL);
+	ft_strlcpy(sub, s + start, sublen + 1);
+	sub[sublen] = '\0';
+	return (sub);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -64,20 +113,6 @@ char	*ft_strchr(const char *s, int c)
 	{
 		if (s[index] == (char)c)
 			return ((char *)&s[index]);
-		index++;
-	}
-	return (0);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	index;
-
-	index = 0;
-	while (index < n && (s1[index] != '\0' || s2[index] != '\0'))
-	{
-		if (s1[index] != s2[index])
-			return ((unsigned char)s1[index] - (unsigned char)s2[index]);
 		index++;
 	}
 	return (0);

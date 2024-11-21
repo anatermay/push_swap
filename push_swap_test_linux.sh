@@ -3404,14 +3404,6 @@ fi
 if [ $res_err != 0 ]; then
 printf	"${WHITE}\nTest ${DEF_COLOR}${RED}[NO SORTED] ${WHITE}$res_err/$val\n"
 fi
-printf	"${WHITE}\nTest ${DEF_COLOR}${RED}[2/5] ${WHITE}$res_4/$val"
-fi
-if [ $res_5 != 0 ]; then
-printf	"${WHITE}\nTest ${DEF_COLOR}${RED}[1/5] ${WHITE}$res_5/$val\n"
-fi
-if [ $res_err != 0 ]; then
-printf	"${WHITE}\nTest ${DEF_COLOR}${RED}[NO SORTED] ${WHITE}$res_err/$val\n"
-fi
 if [ $res_1  != $val ]; then
 	printf "${CYAN}\nCheck traces $PWD/traces.txt\n"
 fi

@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:48:27 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 20:55:13 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:25:55 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,44 @@ int	stacklength(t_stack *stack)
 	return (length);
 }
 
-void	stackadd(t_stack **stack, t_stack *new)
+void	stackadd(t_stack **stack, t_stack *new, bool back)
 {
-	new->next = *stack;
-	*stack = new;
+	t_stack	*temp;
+
+	if (!back)
+	{
+		new->next = *stack;
+		*stack = new;
+	}
+	else
+	{
+		if (!*stack || !new)
+			return ;
+		if (!*stack)
+		{
+			new->next = NULL;
+			*stack = new;
+			return ;
+		}
+		else
+		{
+			temp = stacklast(stack);
+			temp->next = new;
+		}
+	}
 }
 
 t_stack	*stacknew(int value)
 {
 	t_stack	*newnode;
 
+	newnode = 0;
 	newnode = (t_stack *)malloc(sizeof(t_stack));
 	if (!newnode)
+	{
+		free(newnode);
 		return (NULL);
+	}
 	newnode->value = value;
 	newnode->next = NULL;
 	return (newnode);
@@ -58,11 +83,13 @@ t_stack	*stacknew(int value)
 t_stack	*stackdup(t_stack *original)
 {
 	t_stack	*dup;
+	t_stack	*temp;
 
 	dup = NULL;
 	while (original)
 	{
-		stackadd(&dup, stacknew(original->value));
+		temp = stacknew(original->value);
+		stackadd(&dup, temp, 0);
 		original = original->next;
 	}
 	return (dup);

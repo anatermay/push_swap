@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:07:47 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 17:12:00 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:42:41 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ bool	duplicates(t_stack *stack_a)
 
 void	stack_args_checker(t_stack *stack)
 {
-	if (!stack)
-		return ;
 	if (sorted(stack) == 1)
 		error(0);
 	if (duplicates(stack) == 1)

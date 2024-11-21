@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:39:55 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 19:23:50 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/21 12:38:41 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <string.h>
 # include <stddef.h>
+# include "libft.h"
 
 typedef struct s_stack
 {
@@ -42,7 +43,7 @@ void	error(bool print);
 /*BSO*/
 void	rotate_stack_b(t_stack **stack_b, int *cost);
 void	rotate_stack_a(t_stack **stack_a, int *cost);
-void	rotate(t_stack **stack_a, t_stack **stack_b, int *cost_a, int *cost_b);
+void	rotate(t_stack **a, t_stack **b, int *cost_a, int *cost_b);
 void	reverse_rotate(t_stack **a, t_stack **b, int *ca, int *cb);
 
 /*COST ALGORITHM*/
@@ -64,11 +65,6 @@ void	if_three_args(t_stack **stack_a);
 void	if_four_args(t_stack **stack_a, t_stack **stack_b);
 void	if_five_args(t_stack **stack_a, t_stack **stack_b);
 
-/*LIBFT*/
-int		ft_isdigit(int c);
-int		spc(char str);
-int		ft_atoi(const char *str);
-
 /*MEMORY HANDLING*/
 void	free_stack(t_stack **stack);
 void	free_both_stack(t_stack **stack_a, t_stack **stack_b);
@@ -81,6 +77,7 @@ int		max_index(t_stack *stack);
 /*PUSH SWAP*/
 void	algorithm(t_stack **stack_a, t_stack **stack_b);
 void	push_swap(t_stack *stack_a, t_stack *stack_b);
+t_stack	*stackcreation(int argc, char **argv, t_stack *stack_a);
 int		main(int argc, char **argv);
 
 /*PUSH*/
@@ -100,7 +97,7 @@ void	rb(t_stack **stack_b, bool print);
 /*STACK HANDLING*/
 t_stack	*stacklast(t_stack **stack);
 int		stacklength(t_stack *stack);
-void	stackadd(t_stack **stack, t_stack *new);
+void	stackadd(t_stack **stack, t_stack *new, bool back);
 t_stack	*stacknew(int value);
 t_stack	*stackdup(t_stack *original);
 

@@ -6,11 +6,12 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:48:27 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 21:20:33 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/21 12:42:59 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
 void	algorithm(t_stack **stack_a, t_stack **stack_b)
 {
@@ -60,30 +61,46 @@ void	push_swap(t_stack *stack_a, t_stack *stack_b)
 		algorithm(&stack_a, &stack_b);
 }
 
+t_stack	*stackcreation(int argc, char **argv, t_stack *stack_a)
+{
+	t_stack	*temp;
+	int		index;
+
+	index = argc - 1;
+	while (argv[index] && index > 0)
+	{
+		valid_numbers(argv[index]);
+		temp = stacknew(ft_atoi(argv[index]));
+		temp->next = stack_a;
+		stack_a = temp;
+		index--;
+	}
+	return (stack_a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_stack	*temp;
 
-	if (argc < 2)
-		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
-	while ((argc - 1) > 0)
+	if (argc < 2)
+		return (0);
+	else if (argc == 2)
 	{
-		valid_numbers(argv[argc - 1]);
-		temp = stacknew(ft_atoi(argv[argc - 1]));
-		if (!temp)
-		{
-			free_stack(&stack_a);
-			return (0);
-		}
-		stackadd(&stack_a, temp);
-		argc--;
+		if (!argv[1][0] || ((argv[1][0] == '+'
+			|| argv[1][0] == '-') && !argv[1][1]))
+			error(1);
+		stack_a = stackcreation(argc, ft_split(argv[1], ' '), stack_a);
 	}
+	else if (argc > 2)
+		stack_a = stackcreation(argc, argv, stack_a);
 	stack_args_checker(stack_a);
-	push_swap(stack_a, stack_b);
+	if (sorted(stack_a) == false)
+		push_swap(stack_a, stack_b);
+	if (argc == 2)
+		ft_free(ft_split(argv[1], ' '), 0);
 	free_both_stack(&stack_a, &stack_b);
 	return (0);
 }

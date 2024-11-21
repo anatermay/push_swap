@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:09:00 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 13:56:04 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:25:27 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	rotate_stack_a(t_stack **stack_a, int *cost)
 	}
 }
 
-void	rotate(t_stack **stack_a, t_stack **stack_b, int *cost_a, int *cost_b)
+void	rotate(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
 	while (*cost_a > 0 && *cost_b > 0)
 	{
 		(*cost_a)--;
 		(*cost_b)--;
-		rr(stack_a, stack_b, 1);
+		rr(a, b, 1);
 	}
 }
 

@@ -4,50 +4,54 @@ NAME_BONUS		= checker
 CC 				= gcc
 CFLAGS 			= -Wall -Werror -Wextra -g
 
-SRCS = argv_checker.c \
-	bso.c \
+SRCS = bso.c \
 	cost_algorithm_0.c \
 	cost_algorithm_1.c \
 	if_nbr_args.c \
-	libft.c \
-	memory_handling.c \
 	min_handling.c \
 	push_swap.c \
+
+LIBFT_SRCS = libft.c \
+	libft_continue.c \
+	ft_split.c \
+
+COMMON_FILES_SRCS = argv_checker.c \
+	memory_handling.c \
 	push.c \
 	reverse_rotate.c \
 	rotate.c \
+	stack_creation.c \
 	stack_handling.c \
 	swap.c \
 
 BONUS_SRCS = checker.c \
 	get_next_line.c \
-	get_next_line_utils.c \
-	libft_bonus.c \
 
-OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
-
-OBJS_DIR = ./objs
+OBJECTS = $(SRCS:.c=.o)
+LIBFT_OBJECTS = $(LIBFT_SRCS:.c=.o)
+COMMON_FILES_OBJECTS = $(COMMON_FILES_SRCS:.c=.o)
+BONUS_OBJECTS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	${CC} ${CFLAGS} -o ${NAME} ${OBJS}
+$(NAME): $(OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
+	@${CC} ${CFLAGS} -o ${NAME} ${OBJECTS} $(COMMON_FILES_OBJECTS) ${LIBFT_OBJECTS}
+	chmod +x $(NAME)
 
-bonus: $(BONUS_NAME)
+bonus: $(NAME_BONUS)
 
-$(BONUS_NAME): $(BONUS_OBJS)
-	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJS_BONUS)
+$(NAME_BONUS): $(BONUS_OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
+	@$(CC) $(CFLAGS) -o $(NAME_BONUS) $(BONUS_OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
+	chmod +x $(NAME_BONUS)
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
+	@${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
-	if [ -d "$(OBJS_DIR)" ]; then ${RM} -r $(OBJS_DIR); fi
+	rm -f $(OBJECTS) $(BONUS_OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
 

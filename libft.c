@@ -6,11 +6,37 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:48:27 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 14:05:22 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:28:10 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	length;
+
+	length = 0;
+	while (s[length])
+		length++;
+	return (length);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned int	index;
+
+	index = 0;
+	if (n == 0)
+		return (0);
+	while (index < n && (s1[index] || s2[index]))
+	{
+		if (s1[index] != s2[index])
+			return ((unsigned char)s1[index] - (unsigned char)s2[index]);
+		index++;
+	}
+	return (0);
+}
 
 int	ft_isdigit(int c)
 {
@@ -19,7 +45,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	spc(char str)
+static int	spc(char str)
 {
 	if (str == ' ' || str == '\t')
 		return (1);

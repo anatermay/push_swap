@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:05:00 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 21:04:51 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:25:08 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,20 @@ void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
-	if (!stack)
+	if (*stack == NULL)
 		return ;
-	while (*stack != NULL)
+	while (*stack)
 	{
-		temp = *stack;
-		*stack = (*stack)->next;
-		free(temp);
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
 	}
 	*stack = NULL;
+	free(temp);
 }
 
 void	free_both_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	if (!stack_a || !stack_b)
-		return ;
 	free_stack(stack_a);
 	free_stack(stack_b);
 }

@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 13:53:13 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/17 20:01:34 by aternero         ###   ########.fr       */
+/*   Created: 2024/11/20 14:08:21 by aternero          #+#    #+#             */
+/*   Updated: 2024/11/20 14:32:14 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "libft.h"
 
 static char	*ft_cub(char *buff)
 {
