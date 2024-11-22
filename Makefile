@@ -13,14 +13,12 @@ SRCS = bso.c \
 
 LIBFT_SRCS = libft.c \
 	libft_continue.c \
-	ft_split.c \
 
 COMMON_FILES_SRCS = argv_checker.c \
 	memory_handling.c \
 	push.c \
 	reverse_rotate.c \
 	rotate.c \
-	stack_creation.c \
 	stack_handling.c \
 	swap.c \
 

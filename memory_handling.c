@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:05:00 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/18 20:25:08 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:38:09 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	free_str(char **str)
 {
-	if (!str || !*str)
+	int	index;
+
+	index = 0;
+	if (!str)
 		return ;
-	free(*str);
-	*str = NULL;
+	while (str[index++])
+		free(str[index]);
+	free(str);
 }
 
 void	free_stack(t_stack **stack)
@@ -38,6 +42,8 @@ void	free_stack(t_stack **stack)
 
 void	free_both_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	free_stack(stack_a);
-	free_stack(stack_b);
+	if (stack_a)
+		free_stack(stack_a);
+	if (stack_b)
+		free_stack(stack_b);
 }

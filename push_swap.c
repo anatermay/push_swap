@@ -6,12 +6,13 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:48:27 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/21 12:42:59 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:53:48 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
+#include <stdio.h>
 
 void	algorithm(t_stack **stack_a, t_stack **stack_b)
 {
@@ -82,25 +83,27 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_stack	*temp;
 
-	stack_a = NULL;
-	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	else if (argc == 2)
+	stack_a = NULL;
+	stack_b = NULL;
+	temp = NULL;
+	while ((argc - 1) > 0)
 	{
-		if (!argv[1][0] || ((argv[1][0] == '+'
-			|| argv[1][0] == '-') && !argv[1][1]))
-			error(1);
-		stack_a = stackcreation(argc, ft_split(argv[1], ' '), stack_a);
+		valid_numbers(argv[argc - 1]);
+		temp = stacknew(ft_atoi(argv[argc - 1]));
+		if (!temp)
+		{
+			free_stack(&stack_a);
+			return (0);
+		}
+		stackadd(&stack_a, temp, 0);
+		argc--;
 	}
-	else if (argc > 2)
-		stack_a = stackcreation(argc, argv, stack_a);
 	stack_args_checker(stack_a);
-	if (sorted(stack_a) == false)
-		push_swap(stack_a, stack_b);
-	if (argc == 2)
-		ft_free(ft_split(argv[1], ' '), 0);
+	push_swap(stack_a, stack_b);
 	free_both_stack(&stack_a, &stack_b);
 	return (0);
 }

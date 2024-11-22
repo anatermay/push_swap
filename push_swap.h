@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:39:55 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/21 12:38:41 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:40:07 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	if_four_args(t_stack **stack_a, t_stack **stack_b);
 void	if_five_args(t_stack **stack_a, t_stack **stack_b);
 
 /*MEMORY HANDLING*/
+void	free_str(char **str);
 void	free_stack(t_stack **stack);
 void	free_both_stack(t_stack **stack_a, t_stack **stack_b);
 

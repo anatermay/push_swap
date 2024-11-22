@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:07:47 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/20 13:42:41 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:48:37 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	valid_numbers(char *str)
 	number = 0;
 	sign = 1;
 	index = 0;
-	if (!ft_isdigit(str[0]) && str[0] != '-' && str[0] != '+')
+	if (!ft_isdigit(str[0]) && str[0] != '-' && str[0] != '+' && str[0] != '"')
 		error(1);
 	if (str[index] == '-' || str[index] == '+')
 	{
