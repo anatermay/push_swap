@@ -34,22 +34,24 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
 	@${CC} ${CFLAGS} -o ${NAME} ${OBJECTS} $(COMMON_FILES_OBJECTS) ${LIBFT_OBJECTS}
-	chmod +x $(NAME)
+	@chmod +x $(NAME)
+	@echo "OK"
 
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(BONUS_OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
 	@$(CC) $(CFLAGS) -o $(NAME_BONUS) $(BONUS_OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
-	chmod +x $(NAME_BONUS)
+	@chmod +x $(NAME_BONUS)
+	@echo "OK"
 
 %.o: %.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(BONUS_OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
+	@rm -f $(OBJECTS) $(BONUS_OBJECTS) $(COMMON_FILES_OBJECTS) $(LIBFT_OBJECTS)
 
 fclean: clean
-	rm -f $(NAME) $(NAME_BONUS)
+	@rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
 

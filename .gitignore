@@ -1,3 +1,11 @@
+*.txt
+*.sh
+0
+pro_checker
+checker_linux
+push_swap_test_linux.sh
+.gitignore
+
 # Prerequisites
 *.d
 

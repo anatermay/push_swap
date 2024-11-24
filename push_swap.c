@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:48:27 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/22 10:53:48 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:17:38 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ void	algorithm(t_stack **stack_a, t_stack **stack_b)
 		min_positioning(stack_a);
 }
 
-void	push_swap(t_stack *stack_a, t_stack *stack_b)
+void	push_swap(t_stack *stack_a)
 {
-	int	length;
+	t_stack	*stack_b;
+	int		length;
 
 	if (!stack_a)
 		return ;
+	stack_b = NULL;
 	length = stacklength(stack_a);
 	index_assignment(&stack_a);
 	position_assignment(&stack_a);
@@ -60,50 +62,34 @@ void	push_swap(t_stack *stack_a, t_stack *stack_b)
 		if_five_args(&stack_a, &stack_b);
 	else if (length > 5 && sorted(stack_a) == 0)
 		algorithm(&stack_a, &stack_b);
-}
-
-t_stack	*stackcreation(int argc, char **argv, t_stack *stack_a)
-{
-	t_stack	*temp;
-	int		index;
-
-	index = argc - 1;
-	while (argv[index] && index > 0)
-	{
-		valid_numbers(argv[index]);
-		temp = stacknew(ft_atoi(argv[index]));
-		temp->next = stack_a;
-		stack_a = temp;
-		index--;
-	}
-	return (stack_a);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack	*stack_b;
 	t_stack	*temp;
+	int		index;
 
-	if (argc < 2)
+	if (argc <= 1)
 		return (0);
 	stack_a = NULL;
-	stack_b = NULL;
 	temp = NULL;
-	while ((argc - 1) > 0)
+	index = argc - 1;
+	while (index > 0)
 	{
-		valid_numbers(argv[argc - 1]);
-		temp = stacknew(ft_atoi(argv[argc - 1]));
-		if (!temp)
-		{
-			free_stack(&stack_a);
-			return (0);
-		}
+		valid_numbers(argv[index]);
+		temp = stacknew(ft_atoi(argv[index]));
 		stackadd(&stack_a, temp, 0);
-		argc--;
+		index--;
 	}
-	stack_args_checker(stack_a);
-	push_swap(stack_a, stack_b);
-	free_both_stack(&stack_a, &stack_b);
+	duplicated(stack_a);
+	if (sorted(stack_a) == 1)
+	{
+		free_stack(&stack_a);
+		ft_error(0);
+	}
+	push_swap(stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 20:02:12 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/21 12:43:33 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:51:05 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void	input_checker(int argc, char **argv, t_stack **stack_a)
 		*stack_a = temp;
 		index--;
 	}
-	stack_args_checker(*stack_a);
+	duplicated(*stack_a);
+	if (sorted(*stack_a) == 1)
+		ft_error(0);
 }
 
 int	main(int ac, char **agv)

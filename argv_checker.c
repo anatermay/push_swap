@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:07:47 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/22 10:48:37 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:06:00 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,42 @@ bool	sorted(t_stack *stack_a)
 	return (1);
 }
 
-bool	duplicates(t_stack *stack_a)
+void	duplicated(t_stack *stack_a)
 {
 	t_stack	*temp;
-	t_stack	*temp2;
 
-	temp = stack_a;
-	while (temp != NULL)
+	if (!stack_a)
+		return ;
+	while (stack_a->next != NULL)
 	{
-		temp2 = temp->next;
-		while (temp2 != NULL)
+		if (stack_a->value == stack_a->next->value)
 		{
-			if (temp->value == temp2->value)
-				return (1);
-			temp2 = temp2->next;
+			free_stack(&stack_a);
+			ft_error(1);
 		}
-		temp = temp->next;
+		temp = stack_a->next;
+		while (temp != NULL)
+		{
+			if (stack_a->value == temp->value)
+			{
+				free_stack(&stack_a);
+				ft_error(1);
+			}
+			temp = temp->next;
+		}
+		stack_a = stack_a->next;
 	}
-	return (0);
 }
 
-void	stack_args_checker(t_stack *stack)
+void	sign_check(char *str)
 {
-	if (sorted(stack) == 1)
-		error(0);
-	if (duplicates(stack) == 1)
-		error(1);
+	int	index;
+
+	index = 0;
+	if (str[index] == '-' && str[index + 1] == '\0')
+		ft_error(1);
+	if (str[index] == '+' && str[index + 1] == '\0')
+		ft_error(1);
 }
 
 void	valid_numbers(char *str)
@@ -65,8 +75,9 @@ void	valid_numbers(char *str)
 	number = 0;
 	sign = 1;
 	index = 0;
+	sign_check(str);
 	if (!ft_isdigit(str[0]) && str[0] != '-' && str[0] != '+' && str[0] != '"')
-		error(1);
+		ft_error(1);
 	if (str[index] == '-' || str[index] == '+')
 	{
 		if (str[index] == '-')
@@ -76,15 +87,15 @@ void	valid_numbers(char *str)
 	while (str[index])
 	{
 		if (!ft_isdigit(str[index]))
-			error(1);
+			ft_error(1);
 		number = number * 10 + (str[index]) - '0';
 		index++;
 	}
 	if ((number * sign) > INT_MAX || (number * sign) < INT_MIN)
-		error(1);
+		ft_error(1);
 }
 
-void	error(bool print)
+void	ft_error(bool print)
 {
 	if (print)
 		write(2, "Error\n", 6);

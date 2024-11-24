@@ -6,7 +6,7 @@
 /*   By: aternero <aternero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:39:55 by aternero          #+#    #+#             */
-/*   Updated: 2024/11/22 10:40:07 by aternero         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:04:49 by aternero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ typedef struct s_stack
 
 /*ARGV_CHECKER*/
 bool	sorted(t_stack *stack_a);
-bool	duplicates(t_stack *stack_a);
-void	stack_args_checker(t_stack *stack);
+void	duplicated(t_stack *stack_a);
 void	valid_numbers(char *str);
-void	error(bool print);
+void	ft_error(bool print);
 
 /*BSO*/
 void	rotate_stack_b(t_stack **stack_b, int *cost);
@@ -77,8 +76,7 @@ int		max_index(t_stack *stack);
 
 /*PUSH SWAP*/
 void	algorithm(t_stack **stack_a, t_stack **stack_b);
-void	push_swap(t_stack *stack_a, t_stack *stack_b);
-t_stack	*stackcreation(int argc, char **argv, t_stack *stack_a);
+void	push_swap(t_stack *stack_a);
 int		main(int argc, char **argv);
 
 /*PUSH*/
